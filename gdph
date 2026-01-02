@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gardien des Phares - Support & Confidentialité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:italic&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: { 50: '#FDFBF7', 100: '#F9F7F1', 200: '#EBE5CE', 900: '#D6CDB0' },
+              marine: { 100: '#C8D9E6', 300: '#8FB8CA', 500: '#547C96', 800: '#2C3E50', 900: '#1A2C38', 950: '#0F1A21' },
+              lighthouse: { red: '#D94E41', hover: '#B93A2E' }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        body {
+            background-color: #0F1A21;
+            color: #F9F7F1;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.1) 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.3;
+        }
+
+        .lighthouse-beam {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(217,78,65,0.05) 10deg, transparent 20deg);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .terminal-font { font-family: 'JetBrains Mono', monospace; }
+        .lore-font { font-family: 'Playfair Display', serif; }
+
+        .plate-border {
+            border: 4px solid #EBE5CE;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 25px 50px -12px rgba(0,0,0,0.7);
+        }
+
+        .rivet {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle at 30% 30%, #D6CDB0, #8A8268);
+            border-radius: 50%;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .btn-military {
+            background: #D94E41;
+            box-shadow: 0 4px 0 #8A2E26;
+            transition: all 0.1s;
+        }
+        .btn-military:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #8A2E26;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-12 overflow-x-hidden">
+    <div class="scanlines"></div>
+    <div class="lighthouse-beam"></div>
+    
+    <main class="relative z-20 w-full max-w-3xl bg-marine-800 plate-border rounded-lg overflow-hidden">
+        <div class="rivet top-2 left-2"></div>
+        <div class="rivet top-2 right-2"></div>
+        <div class="rivet bottom-2 left-2"></div>
+        <div class="rivet bottom-2 right-2"></div>
+
+        <header class="bg-marine-950 p-10 border-b-4 border-marine-900 text-center relative">
+            <div class="flex justify-center mb-6">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-lighthouse-red blur-xl opacity-20 animate-pulse"></div>
+                    <div class="relative bg-marine-900 p-6 rounded-full border-2 border-lighthouse-red shadow-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D94E41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="5" r="3"></circle>
+                            <path d="M12 22V8"></path>
+                            <path d="M5 12H2a10 10 0 0 0 20 0h-3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-[0.3em] mb-4 text-cream-50">
+                Gardien <span class="text-lighthouse-red">des</span> Phares
+            </h1>
+            <div class="inline-block px-4 py-1 border border-marine-600 bg-marine-800 rounded">
+                <span class="terminal-font text-xs text-marine-300 font-bold tracking-widest uppercase italic">Protocole de Communication Officiel // PierZen Studio</span>
+            </div>
+        </header>
+
+        <div class="p-8 md:p-14 space-y-16 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]">
+            
+            <section class="relative px-8 text-center">
+                <span class="absolute top-0 left-0 text-6xl text-marine-600 lore-font opacity-30">“</span>
+                <p class="text-xl text-marine-100 lore-font italic leading-relaxed">
+                    La mer ne pardonne pas le silence, Gardien. <br class="hidden md:block">
+                    Ici, nous assurons la liaison entre les côtes et l'éclat de vos phares.
+                </p>
+                <span class="absolute bottom-0 right-0 text-6xl text-marine-600 lore-font opacity-30">”</span>
+            </section>
+
+            <section class="grid md:grid-cols-5 gap-8 items-center bg-marine-900/50 p-8 rounded-3xl border-2 border-marine-700/50">
+                <div class="md:col-span-3 space-y-4">
+                    <h2 class="text-xl font-bold uppercase tracking-widest text-yellow-400 flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                        </span>
+                        Assistance Technique
+                    </h2>
+                    <p class="text-marine-100 text-sm leading-relaxed text-justify italic">
+                        Une avarie sur vos tourelles ? Un signal corrompu dans le chenal ? Envoyez votre rapport codé à notre station de réception.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <a href="mailto:pierzenstudio@gmail.com" class="btn-military block w-full text-center py-4 rounded-lg font-bold text-cream-50 terminal-font uppercase tracking-tighter hover:bg-lighthouse-hover transition-all">
+                        Etablir Liaison<br>
+                        <span class="text-[10px] opacity-70">pierzenstudio@gmail.com</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="space-y-8">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-marine-400 whitespace-nowrap">Registres de Sécurité</h2>
+                    <div class="h-px w-full bg-marine-700"></div>
+                </div>
+
+                <div class="grid gap-8">
+                    <div class="flex gap-6 group">
+                        <div class="flex-shrink-0 w-12 h-12 bg-marine-950 border border-marine-600 rounded-xl flex items-center justify-center text-lighthouse-red group-hover:border-lighthouse-red transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-cream-100 uppercase mb-2 tracking-wide">Réseau d'Annonces (AdMob)</h3>
+                            <p class="text-xs text-marine-300 leading-relaxed text-justify italic">
+                                Le maintien de la station nécessite des ressources. Google traite des identifiants techniques anonymes pour calibrer les transmissions publicitaires sans jamais compromettre votre identité de Gardien.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 group">
+                        <div class="flex-shrink-0 w-12 h-12 bg-marine-950 border border-marine-600 rounded-xl flex items-center justify-center text-lighthouse-red group-hover:border-lighthouse-red transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-cream-100 uppercase mb-2 tracking-wide">Commerce de Cristaux</h3>
+                            <p class="text-xs text-marine-300 leading-relaxed text-justify italic">
+                                Toute acquisition de cristaux d'Ys est cryptée via le protocole Google Play Billing. PierZen Studio ne traite, ne voit, ni ne stocke aucune donnée bancaire. Vos coffres sont inviolables.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 group">
+                        <div class="flex-shrink-0 w-12 h-12 bg-marine-950 border-2 border-green-500/30 rounded-xl flex items-center justify-center text-green-500 group-hover:bg-green-500/10 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22v-7m0-4V2m0 9l4 4m-4-4l-4 4"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-green-500 uppercase mb-2 tracking-wide text-glow-green">Intégrité des Données</h3>
+                            <p class="text-xs text-cream-100 leading-relaxed text-justify font-bold bg-green-500/5 p-2 rounded">
+                                AUCUNE donnée Gardien n'est vendue ou cédée. Vos journaux de bord restent au sein de l'archipel. La lumière de nos phares reste pure.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="p-8 bg-marine-950 border-t-4 border-marine-900 text-center">
+            <p class="terminal-font text-[10px] uppercase tracking-[0.5em] text-marine-600 font-bold">
+                PierZen Studio &copy; 2026 // Finistère, Terre des Gardiens
+            </p>
+        </footer>
+    </main>
+
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none border-[20px] border-marine-950/20 z-0"></div>
+</body>
+</html>
